@@ -22,3 +22,4 @@ urlpatterns = [
     path('hw/', include('hello_world.urls')), # new link in urls from our app
     path('', include('pages.urls')),
 ]
+

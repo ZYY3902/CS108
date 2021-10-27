@@ -1,3 +1,6 @@
+# file: pages/views.py
+# description: provide a view to send to the user
+
 from django.shortcuts import render
 from django.views.generic import TemplateView
 

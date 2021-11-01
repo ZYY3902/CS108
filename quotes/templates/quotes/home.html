@@ -1,0 +1,19 @@
+<!-- quotes/home.html -->
+
+<h1>Showing all quotes</h1>
+
+<!-- scriptlet code to display the value of the context variable `quotes`  -->
+
+<!-- quote is an invalid template variable name! {{quote}} -->
+
+<!-- {{quotes}} -->
+
+<!-- create a loop to display the quotes -->
+
+<ul>
+    {% for quote in quotes %}
+    <li>"{{quote.text}}" - {{quote.author}}<br>
+        <img src="{{quote.image_url}}" style="max-width: 400;">
+    </li>
+    {% endfor %}
+</ul>

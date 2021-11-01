@@ -20,6 +20,7 @@ from django.urls.conf import include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hw/', include('hello_world.urls')), # new link in urls from our app
-    path('', include('pages.urls')),
+    path('pages/', include('pages.urls')), # include the URLs from our pages project's urls.py file
+    path('quotes/', include('quotes.urls')), # include the URLs from our quotes project's urls.py file
 ]
 

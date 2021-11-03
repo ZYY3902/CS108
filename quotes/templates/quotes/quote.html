@@ -1,0 +1,7 @@
+<!-- templates/quote.html -->
+
+<center>
+    <h1>{{quote.text}}</h1> 
+    <h3>- <a href="{% url 'person' quote.person.pk %}">{{quote.person}}</a></h3>
+    <img src="{{quote.person.get_random_image}}" style="max-width: 400;">
+</center>

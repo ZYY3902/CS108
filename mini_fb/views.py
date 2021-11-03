@@ -9,7 +9,7 @@ class ShowAllProfilesView(ListView):
     '''Show a listing of user profiles'''
 
     model = Profile 
-    template_name = 'minifb/show_all_profiles.html'
+    template_name = 'mini_fb/show_all_profiles.html'
     context_object_name = 'allprofiles' # how to find the data in the template file
 
 # class ShowProfilePageView(DetailView):

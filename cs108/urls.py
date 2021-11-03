@@ -22,7 +22,7 @@ urlpatterns = [
     path('hw/', include('hello_world.urls')), # new link in urls from our app
     path('pages/', include('pages.urls')), # include the URLs from our pages project's urls.py file
     path('quotes/', include('quotes.urls')), # include the URLs from our quotes project's urls.py file
-    path('minifb/', include('mini_fb.urls')),
+    path('mini_fb/', include('mini_fb.urls')),
     
 ]
 

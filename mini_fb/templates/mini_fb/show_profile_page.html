@@ -1,0 +1,40 @@
+<!-- mini_fb/show_profile_page.html-->
+
+{% extends 'mini_fb/base.html' %}
+
+<!-- replace the block content section from the base.html page
+with this more specific version 
+-->
+{% block content %}
+
+<h2>{{profilepage.first_name}} {{profilepage.last_name}}'s profile page</h2>
+
+<table>
+    <tr>
+        <td>
+            <img src={{profilepage.image}} style="width: 60%;" />  
+        </td>
+    </tr>  
+    <tr>
+        <td>
+            <table>  
+                <tr>
+                    <th>Name</th><td>{{profilepage.first_name}} {{profilepage.last_name}}</td>
+                </tr>   
+                <tr>
+                    <th>Hometown</th><td>{{profilepage.city}}</td>
+                </tr>     
+                <tr>
+                    <th>Birth Date</th><td></td>
+                </tr>   
+            </table>
+        </td>
+    </tr>
+</table>
+
+<h2>{{profilepage.first_name}}'s Story</h2>
+{% for me in profilepage.get_status_messages %}
+   {{me.timestamp}} {{me.message}}<br>
+{% endfor %}
+
+{% endblock %} <!-- end of content block -->

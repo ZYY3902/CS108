@@ -1,0 +1,21 @@
+<!-- mini_fb/base.html -->
+
+<html>
+    <head>
+        <title>MiniFacebook</title>
+    </head>
+
+    <body>
+    <!-- navigation links -->
+    <header>
+        <a href="{% url 'show_all_profiles' %}"><h3>MiniFacebook Home</h3></a>
+    </header>
+    <!-- this content block will be filled in by another template 
+        which extends this base.html page. -->
+    {% block content %}
+    {% endblock %}
+    <hr>
+    Create by ziningye@bu.edu
+    </body>
+        
+</html>

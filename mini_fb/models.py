@@ -1,5 +1,4 @@
 from django.db import models
-import random
 
 # Create your models here.   
 
@@ -25,6 +24,7 @@ class Profile(models.Model):
         
 
 class StatusMessage(models.Model):
+    '''model the data attributes of Facebook status message'''
 
     timestamp = models.TextField(blank=True)
     message = models.TextField(blank=True)

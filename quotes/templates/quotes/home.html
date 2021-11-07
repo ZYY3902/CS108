@@ -1,5 +1,8 @@
 <!-- quotes/home.html -->
 
+{% extends 'quotes/base.html' %}
+
+{% block content %}
 <h1>Showing all quotes</h1>
 
 <!-- scriptlet code to display the value of the context variable `quotes`  -->
@@ -17,3 +20,5 @@
     </li>
     {% endfor %}
 </ul>
+
+{% endblock %}

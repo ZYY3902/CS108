@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from quotes.form import CreateQuoteFrom, UpdateQuoteFrom
 from .models import Quote, Person
 import random
 
@@ -32,10 +33,24 @@ class RandomQuotePageView(DetailView):
         q = random.choice(quotes)
         return q
 
-
 class PersonPageView(DetailView):
     '''Display a single Person object'''
 
     model = Person
     template_name = 'quotes/person.html'
     context_object_name = 'person'
+
+class CreateQuoteView(CreateView):
+    '''Create a new Quote object and store it in the database'''
+
+    model = Quote
+    form_class = CreateQuoteFrom # which form to use to create the Quote
+    template_name = "quotes/create_quote_form.html" # delegate the display to this template
+
+class UpdateQuoteView(UpdateView):
+    '''Update a new Quote object and store it in the database'''
+
+    model = Quote
+    form_class = UpdateQuoteFrom # which form to use to create the Quote
+    template_name = "quotes/update_quote_form.html" # delegate the display to this template
+

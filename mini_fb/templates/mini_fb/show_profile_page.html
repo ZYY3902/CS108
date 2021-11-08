@@ -31,10 +31,14 @@ with this more specific version
         </td>
     </tr>
 </table>
+<a href="{% url 'update_profile' profilepage.pk %}"><h4>Edit this Profile</h4></a>
+<hr>
 
 <h2>{{profilepage.first_name}}'s Story</h2>
 {% for me in profilepage.get_status_messages %}
    {{me.timestamp}} {{me.message}}<br>
 {% endfor %}
+
+
 
 {% endblock %} <!-- end of content block -->

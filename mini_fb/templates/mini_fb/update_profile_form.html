@@ -1,0 +1,16 @@
+<!-- mini_fb/update_profile_form.html -->
+
+<h1>Update this profile</h1>
+
+<form method="POST"> <!-- HTTP POST to send data to the server -->
+    {% csrf_token %}
+
+    <table>
+        {{form.as_table}} <!-- table-style formatting -->
+        <tr>
+            <td></td> <!-- empty! -->
+            <td><input type="submit" value="Update"></td> <!-- line up with the input box-->
+        </tr>
+    </table>
+
+</form>

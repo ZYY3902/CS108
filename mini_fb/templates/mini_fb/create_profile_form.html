@@ -1,0 +1,16 @@
+<!-- mini_fb/create_profile_form.html -->
+
+<h1>Create a new profile</h1>
+
+<form method="POST"> <!-- HTTP POST to send data to the server -->
+    {% csrf_token %}
+
+    <table>
+        {{form.as_table}} <!-- table-style formatting -->
+        <tr>
+            <td></td> <!-- empty! -->
+            <td><input type="submit" value="Create!"></td> <!-- line up with the input box-->
+        </tr>
+    </table>
+
+</form>

@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
-from mini_fb.form import CreateProfileForm, UpdateProfileForm, CreateStatusMessageForm
+from mini_fb.forms import CreateProfileForm, UpdateProfileForm, CreateStatusMessageForm
 from .models import Profile
 
 # Create your views here.

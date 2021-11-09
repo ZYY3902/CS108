@@ -2,10 +2,9 @@
 
 {% extends 'mini_fb/base.html' %}
 
-<!-- replace the block content section from the base.html page
-with this more specific version 
--->
 {% block content %}
+
+<body style="background-color:rgb(203, 209, 212);">
 
 <h2>{{profilepage.first_name}} {{profilepage.last_name}}'s profile page</h2>
 
@@ -30,15 +29,26 @@ with this more specific version
             </table>
         </td>
     </tr>
+
 </table>
 <a href="{% url 'update_profile' profilepage.pk %}"><h4>Edit this Profile</h4></a>
 <hr>
+<form method ="POST" action = '/mini_fb/profile/{{profilepage.pk}}/post_status' >
+    {% csrf_token %}
+    <table>
+        <tr>
+            {{create_status_form}}
+            <td><input type="submit" value="Update"></td> 
+        </tr>
+    </table>
+
+</form>
 
 <h2>{{profilepage.first_name}}'s Story</h2>
 {% for me in profilepage.get_status_messages %}
    {{me.timestamp}} {{me.message}}<br>
 {% endfor %}
 
-
+</body>
 
 {% endblock %} <!-- end of content block -->

@@ -32,9 +32,9 @@ class Profile(models.Model):
 class StatusMessage(models.Model):
     '''model the data attributes of Facebook status message'''
 
-    timestamp = models.TextField(blank=True)
+    timestamp = models.TimeField(blank=True, auto_now_add=True)
     message = models.TextField(blank=True)
     profile = models.ForeignKey('Profile', on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.profile} {self.timestamp} {self.message}'
+        return f'{self.profile} - "{self.message}"'

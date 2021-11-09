@@ -14,6 +14,7 @@
 <ul>
 {% for quote in person.get_all_quotes %}
     <li>{{quote.text}}<br>
+        <a href="{% url 'delete_quote' quote.pk %}">delete</a> <!-- NEW -->
     </li>
 {% endfor %}
 </ul>

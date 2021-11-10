@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from quotes.form import CreateQuoteFrom, UpdateQuoteFrom
+from quotes.form import AddImageForm, CreateQuoteFrom, UpdateQuoteFrom
 from .models import Quote, Person
 from django.urls import reverse
 import random
@@ -42,7 +42,23 @@ class PersonPageView(DetailView):
 
     model = Person
     template_name = 'quotes/person.html'
-    context_object_name = 'person'
+    #context_object_name = 'person'
+
+    def get_context_data(self, **kwargs):
+        '''Return a dictionay with context data for this template to use'''
+
+        # get the default context data:
+        # this will include the Person record for this page view
+        context = super(PersonPageView, self).get_context_data(**kwargs)
+
+        # create add image form:
+        add_image_form = AddImageForm()
+        context['add_image_form'] = add_image_form
+        
+        # return the context dictionary
+        return context
+
+
 
 
 class CreateQuoteView(CreateView):
@@ -66,6 +82,7 @@ class DeleteQuoteView(DeleteView):
 
     template_name = "quotes/delete_quote.html"
     queryset = Quote.objects.all()
+    # success_url = "../../all" ## what to do after deleting a quote
 
     def get_success_url(self):
         '''Return a the URL to which we should be directed after the delete.'''
@@ -79,3 +96,29 @@ class DeleteQuoteView(DeleteView):
 
         # reverse to show the person page
         return reverse('person', kwargs={'pk':person.pk})
+
+
+def add_image(request, pk):
+    '''A custom view function to handle the submission of an image upload.'''
+
+    # find the person for whom we are submitting the image
+    person = Person.objects.get(pk=pk)
+
+    # read request data into AddImageForm object
+    form = AddImageForm(request.POST or None, request.FILES or None)
+
+    # check if the form is valid, save object to database
+    if form.is_valid():
+
+        image = form.save(commit=False) # create the Image object, but not save yet
+
+        # attach the foreign key to this image
+        image.person = person
+        image.save() # store to the database
+
+    else:
+        print("Error: the form was not valid.")
+
+    # redirect to a new URL, display person page
+    url = reverse('person', kwargs={'pk':pk})
+    return redirect(url)

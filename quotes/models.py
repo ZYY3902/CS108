@@ -59,9 +59,12 @@ class Image(models.Model):
     '''Represent an image, which is associated with a Person.'''
 
     image_url = models.URLField(blank=True) # url as a string
+    image_file = models.ImageField(blank=True) # an actual image
     person = models.ForeignKey('Person', on_delete=models.CASCADE)
 
     def __str__(self):
         '''Return a string representation of this image.'''
-
-        return self.image_url
+        if self.image_file:
+            return self.image_file.url
+        else:
+            return self.image_url

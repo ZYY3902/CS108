@@ -14,7 +14,7 @@
 <ul>
 {% for quote in person.get_all_quotes %}
     <li>{{quote.text}}<br>
-        <a href="{% url 'delete_quote' quote.pk %}">delete</a> <!-- NEW -->
+        <a href="{% url 'delete_quote' quote.pk %}">delete</a> <!-- link to delete each quote -->
     </li>
 {% endfor %}
 </ul>
@@ -26,5 +26,17 @@
     <li><img src='{{image}}' style='width:200'> </li>
 {% endfor %}
 </ul>
+
+
+<h2>Upload an Image of {{person.name}}</h2>
+
+<form method='POST' enctype="multipart/form-data" 
+      action="{% url 'add_image' person.pk %}">
+
+    {% csrf_token %}
+    {{add_image_form.as_p}}
+    <input type="submit" value="upload">
+
+</form>
 
 {% endblock %}

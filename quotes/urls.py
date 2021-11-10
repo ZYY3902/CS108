@@ -14,4 +14,5 @@ urlpatterns = [
     path('create_quote', CreateQuoteView.as_view(), name="create_quote"), ## NEW URL TO SHOW CREATE QUOTE PAGE
     path('quote/<int:pk>/update', UpdateQuoteView.as_view(), name='update_quote'),
     path('quote/<int:pk>/delete', DeleteQuoteView.as_view(), name="delete_quote"), # URL TO SHOW THE DELETE QUOTE PAGE
+    path('quote/<int:pk>/add_image', add_image, name="add_image"),
 ]

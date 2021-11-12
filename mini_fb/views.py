@@ -1,9 +1,10 @@
+from django.core.checks import messages
 from django.db import models
 from django.urls import reverse
 from django.shortcuts import render, redirect
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from mini_fb.forms import CreateProfileForm, UpdateProfileForm, CreateStatusMessageForm
-from .models import Profile
+from .models import Profile, StatusMessage
 
 # Create your views here.
 
@@ -51,6 +52,44 @@ class UpdateProfileView(UpdateView):
     template_name = 'mini_fb/update_profile_form.html'
 
 
+class DeleteStatusMessageView(DeleteView):
+    '''A view to delete a status message'''
+
+    template_name = "mini_fb/delete_status_form.html"
+    queryset = StatusMessage.objects.all()
+
+    def get_context_data(self, **kwargs):
+        '''Override the get_context_data(self, **kwargs) method within the DeleteStatusMessageView'''
+
+        context = super(DeleteStatusMessageView, self).get_context_data(**kwargs)
+        st_msg = StatusMessage.objects.get(pk=self.kwargs['status_pk'])
+
+        context['st_msg'] = st_msg
+
+        # return this context dictionary
+        return context
+
+    def get_object(self):
+        '''return the StatusMessage object that should be deleted'''
+
+        # read the URL data values into variables
+        profile_pk = self.kwargs['profile_pk']
+        status_pk = self.kwargs['status_pk']
+
+        # find the StatusMessage object, and return it
+        return StatusMessage.objects.filter(profile=profile_pk, pk=status_pk)
+    
+    def get_success_url(self):
+        '''Return a the URL to which we should be directed after the delete.'''
+
+        # read the URL data values into variables
+        profile_pk = self.kwargs['profile_pk']
+        
+        url = reverse('show_profile_page', kwargs={'pk':profile_pk})
+        return url
+
+
+
 def post_status_message(request, pk):
     '''
     Process a form submission to post a new status message.
@@ -62,7 +101,7 @@ def post_status_message(request, pk):
         # print(request.POST) # for debugging at the console
 
         # create the form object from the request's POST data
-        form = CreateStatusMessageForm(request.POST or None)
+        form = CreateStatusMessageForm(request.POST or None, request.FILES or None)
 
         if form.is_valid():
 
@@ -77,6 +116,9 @@ def post_status_message(request, pk):
 
             # now commit to database
             status_message.save()
+        
+        else:
+            print("Error: the form was not valid.")
 
     # redirect the user to the show_profile_page view
     url = reverse('show_profile_page', kwargs={'pk': pk})

@@ -3,6 +3,7 @@
 from django import forms
 from django.db import models
 from django.forms import fields
+from django.forms.models import BaseInlineFormSet
 from .models import Profile, StatusMessage
 
 class CreateProfileForm(forms.ModelForm):
@@ -37,6 +38,8 @@ class UpdateProfileForm(forms.ModelForm):
 class CreateStatusMessageForm(forms.ModelForm):
     '''A form to create a new status message'''
 
+    image = forms.ImageField(required=False)
+
     class Meta:
         model = StatusMessage
-        fields = ['message']
+        fields = ['message', 'image']

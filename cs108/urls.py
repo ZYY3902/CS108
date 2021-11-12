@@ -29,5 +29,5 @@ urlpatterns = [
 ]
 
 # add the MEDIA_URL to the list of project-level urls
-urlpatterns += static(settings.MEDIA_URL, docment_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

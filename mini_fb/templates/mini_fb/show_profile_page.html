@@ -43,6 +43,31 @@
     </table>
 
 </form>
+<hr>
+
+<table>
+    <h2>{{profilepage.first_name}}'s friends</h2>
+
+    {% if profilepage.get_friends %}
+        {% for p in profilepage.get_friends %}
+        <th>
+            <tr>
+                <td>
+                    <a href="{% url 'show_profile_page' p.pk%}">{{p.first_name}} {{p.last_name}}</a>
+                </td>
+                <td>
+                    <img src="{{p.image}}", style="max-width: 70;">
+                </td> 
+            </tr>
+        </th>
+    
+        {% endfor %}
+    
+    {% else %}
+    {{profilepage.first_name}} doesn't have any friends.
+    {% endif %}
+
+</table>
 
 <h2>{{profilepage.first_name}}'s Story</h2>
 {% for me in profilepage.get_status_messages %}

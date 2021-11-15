@@ -12,6 +12,7 @@ class Profile(models.Model):
     city = models.TextField(blank=True)
     email = models.EmailField(blank=True)
     image = models.URLField(blank=True) # url as a string
+    friends = models.ManyToManyField("self")
 
     def __str__(self):
         '''Return a string representation of this user'''
@@ -27,6 +28,11 @@ class Profile(models.Model):
         '''Return a URL to display a profile object'''
 
         return reverse("show_profile_page", kwargs={'pk': self.pk})
+
+    def get_friends(self):
+        '''return all friends of selected profile'''
+
+        return Profile.objects.filter(friends=self)
         
 
 class StatusMessage(models.Model):

@@ -4,8 +4,6 @@
 
 {% block content %}
 
-<body style="background-color:rgb(203, 209, 212);">
-
 <h2>{{profilepage.first_name}} {{profilepage.last_name}}'s profile page</h2>
 
 <table>
@@ -31,7 +29,12 @@
     </tr>
 
 </table>
-<a href="{% url 'update_profile' profilepage.pk %}"><h4>Edit this Profile</h4></a>
+
+
+<a href="{% url 'update_profile' profilepage.pk %}">Edit this Profile</a> |
+<a href="{% url 'news_feed' profilepage.pk %}">Show {{profilepage.first_name}}'s News Feed</a> |
+<a href="{% url 'show_possible_friends' profilepage.pk %}">Find Friends</a> |
+
 <hr>
 <form method ="POST" action = '/mini_fb/profile/{{profilepage.pk}}/post_status' enctype="multipart/form-data">
     {% csrf_token %}
@@ -62,7 +65,6 @@
         </th>
     
         {% endfor %}
-    
     {% else %}
     {{profilepage.first_name}} doesn't have any friends.
     {% endif %}
@@ -79,7 +81,5 @@
     <img src='{{me.image.url}}' style='max-width: 600;'>
     {% endif %}
 {% endfor %}
-
-</body>
 
 {% endblock %} <!-- end of content block -->

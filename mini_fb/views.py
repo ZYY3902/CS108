@@ -1,5 +1,6 @@
 from django.core.checks import messages
 from django.db import models
+from django.db.models.base import Model
 from django.urls import reverse
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -88,6 +89,18 @@ class DeleteStatusMessageView(DeleteView):
         url = reverse('show_profile_page', kwargs={'pk':profile_pk})
         return url
 
+class ShowNewsFeedView(DetailView):
+
+    model = Profile
+    template_name = "mini_fb/show_news_feed.html"
+    context_object_name = "profilepage"
+
+
+class ShowPossibleFriendsView(DetailView):
+
+    model = Profile
+    template_name = "mini_fb/show_possible_friends.html"
+    context_object_name = "profile"
 
 
 def post_status_message(request, pk):
@@ -122,4 +135,15 @@ def post_status_message(request, pk):
 
     # redirect the user to the show_profile_page view
     url = reverse('show_profile_page', kwargs={'pk': pk})
+    return redirect(url)
+
+def add_friend(request, profile_pk, friend_pk):
+    '''add a friend for the given profile'''
+
+    user = Profile.objects.get(pk=profile_pk)
+    friend = Profile.objects.get(pk=friend_pk)
+    user.friends.add(friend)
+    user.save()
+
+    url = reverse('show_profile_page', kwargs={'pk': profile_pk})
     return redirect(url)

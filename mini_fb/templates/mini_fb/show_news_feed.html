@@ -16,7 +16,7 @@
                     {{n.timestamp}}
                 </td>
                 <td>
-                    <a href="{% url 'show_profile_page' n.pk%}">{{n.profile.first_name}} {{n.profile.last_name}}</a>
+                    <a href="{% url 'show_profile_page' n.profile.pk%}">{{n.profile.first_name}} {{n.profile.last_name}}</a>
                 </td>
                 <td>
                     <img src="{{n.profile.image}}", style="max-width: 70;">

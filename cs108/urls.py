@@ -25,6 +25,7 @@ urlpatterns = [
     path('pages/', include('pages.urls')), # include the URLs from our pages project's urls.py file
     path('quotes/', include('quotes.urls')), # include the URLs from our quotes project's urls.py file
     path('mini_fb/', include('mini_fb.urls')),
+    path('project/', include('project.urls')),
     
 ]
 

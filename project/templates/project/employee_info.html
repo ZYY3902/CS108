@@ -1,0 +1,28 @@
+<!-- project/employee_info.html-->
+
+{% extends 'project/base.html' %}
+
+{% block content %}
+
+<h2>Info about {{employee.first_name}} {{employee.last_name}}</h2>
+
+<table>
+    <tr>
+        <td>
+            <table> 
+                <tr>
+                    <th>Name: </th><td>{{employee.first_name}} {{employee.last_name}}</td>
+                </tr>   
+                <tr>
+                    <th>ID: </th><td>{{employee.employee_id}}</td>
+                </tr>     
+                <tr>
+                    <th>Email: </th><td>{{employee.email}}</td>
+                </tr>   
+            </table>
+        </td>
+    </tr>
+
+</table>
+
+{% endblock %}

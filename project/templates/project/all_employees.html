@@ -1,0 +1,33 @@
+<!-- project/all_employees.html -->
+
+{% extends 'project/base.html' %}
+
+{% block content %}
+
+<h2>All Employees</h2>
+
+<table border=1 width=98% style="margin-left:12px;">
+
+    <colgroup>
+        <col span="2" style="width: 30%;">
+        <col span="2" style="width: 30%;">
+        <col span="2" style="width: 40%;">
+    </colgroup>
+
+     <tr>
+         <th>Name</th>
+         <th>Employee ID</th>
+         <th>Email</th>
+     </tr>
+    
+    {% for emp in allemp %}
+    <tr>
+        <td style="text-align: center">{{emp.first_name}} {{emp.last_name}}</td>
+        <td style="text-align: center">{{emp.employee_id}}</td>
+        <td style="text-align: center">{{emp.email}}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}

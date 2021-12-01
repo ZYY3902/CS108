@@ -1,0 +1,33 @@
+<!-- project/base.html -->
+
+<!-- LINK1: Record page as the homepage link -->
+
+
+<html>
+    <head>
+        <title>Part Record</title>
+    </head>
+
+    <body>
+    <!-- navigation links -->
+    <header>
+        <!-- LINK1: Record page as the homepage link -->
+        <a href="{% url 'show_record' %}">Record</a> |
+        <!-- LINK2: Show All Parts -->
+        <a href="{% url 'show_all_parts' %}">All Automotive Parts</a> |
+        <!-- LINK3: Show All Employees -->
+        <a href="{% url 'show_all_emps' %}">All Employees</a> |
+        <!-- LINK4: Add a New Part-->
+        <a href="{% url 'add_new_part' %}">Add New Part</a> |
+        <!-- LINK4: Add a New Employee-->
+        <a href="{% url 'add_new_emp' %}">Add New Employee</a>
+    </header>
+    
+    
+    {% block content %}
+    {% endblock %}
+    <hr>
+    Create by ziningye@bu.edu
+    </body>
+        
+</html>

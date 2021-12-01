@@ -1,0 +1,34 @@
+<!-- project/part_info.html-->
+
+{% extends 'project/base.html' %}
+
+{% block content %}
+
+<h2>Info about {{part.part_name}}</h2>
+
+<table>
+    <tr>
+        <td>
+            <table> 
+                <tr>
+                    <th>Name: </th><td>{{part.part_name}}</td>
+                </tr>   
+                <tr>
+                    <th>ID: </th><td>{{part.part_id}}</td>
+                </tr>     
+                <tr>
+                    <th>Category: </th><td>{{part.category}}</td>
+                </tr>   
+                <tr>
+                    <th>Manufactured Year: </th><td>{{part.manufactured_year}}</td>
+                </tr>   
+                <tr>
+                    <th></th><td>{{part.image.url}}</td>
+                </tr>   
+            </table>
+        </td>
+    </tr>
+
+</table>
+
+{% endblock %}

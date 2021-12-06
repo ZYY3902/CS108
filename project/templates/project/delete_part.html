@@ -1,0 +1,24 @@
+<!-- project/delete_part.html -->
+
+<h2>Are you sure you want to delete this part?</h2>
+
+<h4>Name: </h4>{{part.part_id}}
+<h4>ID: </h4>{{part.part_name}}
+
+<table>
+
+    <th>
+        <form method='POST'>
+            {% csrf_token %}
+            <input type='submit' name="yes" value="yes">
+        </form>
+    </th>
+    <th></th> <!-- empty -->
+    <th>
+        <form method='GET' action="{% url 'parts_info' part.pk %}">
+            {% csrf_token %}
+            <input type='submit' name="no" value="no">
+        </form>
+    </th>
+
+</table>

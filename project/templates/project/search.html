@@ -1,0 +1,31 @@
+<!-- project/search.html -->
+
+{% extends 'project/base.html' %}
+
+{% block content %}
+
+<h2>Search</h2>
+
+<form>
+    {% csrf_token %}
+
+    <input type="text", name="search_text">
+    <input type = "submit">
+
+</form>
+
+
+<h2>Search Results</h2>
+{% if search %}
+    <ul>
+        {% for s in search %}
+        <li>
+            {{s.part_id}} - {{s.part_name}}
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    No results matched your search.
+{% endif %}
+
+{% endblock %}

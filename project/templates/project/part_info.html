@@ -5,30 +5,47 @@
 {% block content %}
 
 <h2>Info about {{part.part_name}}</h2>
+    <p style="text-align: center;">
+    <table> 
+        <tr>
+            <th></th><td><img src="{{part.image}}" style="width: 40%;"></td>
+        </tr>
+        <tr>
+            <th>Name: </th><td>{{part.part_name}}</td>
+        </tr>   
+        <tr>
+            <th>ID: </th><td>{{part.part_id}}</td>
+        </tr>     
+        <tr>
+            <th>Category: </th><td>{{part.category}}</td>
+        </tr>   
+        <tr>
+            <th>Manufactured Year: </th><td>{{part.manufactured_year}}</td>
+        </tr> 
+        <tr>
+            <th>Condition: </th><td>{{part.part_condition}}</td>
+        </tr>
+        <tr>
+            <th>
+                <a href="{% url 'update_part' part.pk %}">Update</a> |
+                <a href="{% url 'delete_part' part.pk %}">Delete</a> <!-- link to delete a part-->
+            </th>
+        </tr>
+    </table>
+</p>
 
-<table>
-    <tr>
-        <td>
-            <table> 
-                <tr>
-                    <th>Name: </th><td>{{part.part_name}}</td>
-                </tr>   
-                <tr>
-                    <th>ID: </th><td>{{part.part_id}}</td>
-                </tr>     
-                <tr>
-                    <th>Category: </th><td>{{part.category}}</td>
-                </tr>   
-                <tr>
-                    <th>Manufactured Year: </th><td>{{part.manufactured_year}}</td>
-                </tr>   
-                <tr>
-                    <th></th><td>{{part.image.url}}</td>
-                </tr>   
-            </table>
-        </td>
-    </tr>
-
-</table>
+    <hr>
+    <h2>Do you want to checkout this part?</h2>
+    <form method ="POST" action = '/project/parts/{{part.pk}}/checkout_form' enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            <tr>
+                {{create_checkout_form}}
+                <td></td> <!-- empty space-->
+                <td></td> <!-- empty space-->
+                <td><input type="submit" value="Checkout this item"></td> 
+            </tr>
+        </table>
+    </form>
 
 {% endblock %}

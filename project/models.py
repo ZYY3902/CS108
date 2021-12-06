@@ -4,19 +4,20 @@ from django.urls import reverse
 
 # Create your models here.
 class Part(models.Model):
-    ''' information about the automotive parts '''
+    ''' Represent information about the automotive parts '''
 
     # date attributes:
-    part_id = models.TextField(blank=True)
+    part_id = models.TextField(blank=False)
     part_name = models.TextField(blank=True)
     category = models.TextField(blank=True)
     quantity = models.IntegerField(blank=False)
     manufactured_year = models.TextField(blank=True)
     image = models.URLField(blank=True)
+    part_condition = models.TextField(blank=True)
 
     def __str__(self):
         
-        return f'{self.part_id} - {self.category}'
+        return f'{self.part_id} - {self.part_name}'
 
     def get_absolute_url(self):
 
@@ -24,7 +25,7 @@ class Part(models.Model):
 
 
 class Employee(models.Model):
-    ''' information about the employee '''
+    ''' Represent information about the employee '''
 
     first_name = models.TextField(blank=True)
     last_name = models.TextField(blank=False)
@@ -47,7 +48,7 @@ class Record(models.Model):
     employee = models.ForeignKey('Employee', on_delete=models.CASCADE)
     checkout_date = models.DateField(blank=False)
     return_date = models.DateField(blank=True,null=True)
-    part_condition = models.TextField(blank=True)
+    # add a status field
 
     def __str__(self):
         

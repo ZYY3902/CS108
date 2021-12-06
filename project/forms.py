@@ -25,7 +25,6 @@ class AddNewPartForm(forms.ModelForm):
         fields = ['part_id', 'part_name', 'category', 'quantity', 'manufactured_year', 'image']
 
 
-
 class AddNewEmpForm(forms.ModelForm):
 
     first_name = forms.CharField(label="First Name", required=True)
@@ -40,3 +39,20 @@ class AddNewEmpForm(forms.ModelForm):
         model = Employee 
         # fields related to the create profile form
         fields = ['first_name', 'last_name', 'employee_id', 'email']
+
+
+class CreateCheckoutPartForm(forms.ModelForm):
+
+    checkout_date = forms.DateField(widget=forms.SelectDateWidget(years=range(2022,2012,-1),),)
+    estimated_return_date = forms.DateField(widget=forms.SelectDateWidget(years=range(2022,2012,-1),),)
+
+    class Meta:
+        model = Record
+        fields = ['employee', 'automotive_parts', 'checkout_date', 'estimated_return_date']
+
+
+class UpdatePartInfoForm(forms.ModelForm):
+
+    class Meta:
+        model = Part
+        fields = ['part_id', 'part_name', 'part_condition']

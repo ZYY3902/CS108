@@ -8,29 +8,19 @@
 
 <table border=1 width=98% style="margin-left:12px;">
     <colgroup>
-        <col span="1" style="width: 20%;">
-        <col span="1" style="width: 15%;">
-        <col span="1" style="width: 30%;">
-        <col span="1" style="width: 15%;">
-        <col span="1" style="width: 10%;">
-        <col span="1" style="width: 10%;">
+        <col span="1" style="width: 50%;">
+        <col span="1" style="width: 50%;">
+      
      </colgroup>
      <tr>
          <th></th>
-         <th>Part ID</th>
          <th>Part Name</th>
-         <th>Category</th>
-         <th>Quantity</th>
-         <th>Manufactured year</th>
+         
      </tr>
      {% for part in allparts %}
      <tr>
          <td style="text-align: center"><img src={{part.image}} style="width: 60%;" /></td>
-         <td style="text-align: center">{{part.part_id}}</td>
-         <td style="text-align: center">{{part.part_name}}</td>
-         <td style="text-align: center">{{part.category}}</td>
-         <td style="text-align: center">{{part.quantity}}</td>
-         <td style="text-align: center">{{part.manufactured_year}}</td>
+         <td style="text-align: center"><a href="{% url 'parts_info' part.pk%}">{{part.part_name}}</a></td>
      </tr>
      {% endfor %}
 

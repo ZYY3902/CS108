@@ -1,0 +1,8 @@
+  <form method ="POST" action= "{% url 'checkout_part' employee.pk part.pk %}">
+                {% csrf_token %}
+                <input type="submit" value="Checkout">
+ </form>
+
+ <th>Category</th>
+         <th>Quantity</th>
+         <th>Manufactured year</th>

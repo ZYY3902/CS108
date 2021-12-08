@@ -7,7 +7,7 @@ from project.models import Employee, Part, Record
 
 # Create your views here.
 class ShowAllPartsView(ListView):
-    ''' show a listing of all automotive parts '''
+    '''show a listing of all automotive parts'''
 
     model = Part # retrieve Part objects from the database
     template_name = 'project/allparts.html' # delegate the display to this template
@@ -16,7 +16,7 @@ class ShowAllPartsView(ListView):
 
 
 class ShowAllEmpsView(ListView):
-    ''' show a listing of all employees '''
+    '''show a listing of all employees'''
 
     model = Employee # retrieve Employee objects from the database
     template_name = 'project/all_employees.html' # delegate the display to this template
@@ -25,7 +25,7 @@ class ShowAllEmpsView(ListView):
 
 
 class ShowRecordsView(ListView):
-    ''' show a listing of all records'''
+    '''show a listing of all records'''
 
     model = Record # retrieve Record objects from the database
     template_name = 'project/record.html' # delegate the display to this template
@@ -34,14 +34,14 @@ class ShowRecordsView(ListView):
 
 
 class SearchView(ListView):
-    ''' return the results of the Part searches '''
+    '''return the results of the Part searches'''
 
     model = Part # retrieve Part objects from the database
     template_name = "project/search.html" # delegate the display to this template
     context_object_name = "search" # variable name used in the template
 
     def get_queryset(self):
-        ''' return a queryset of part objects that matched the searching '''
+        '''return a queryset of part objects that matched the searching'''
 
         # if find, return the name of the item searched
         if 'search_text' in self.request.GET:
@@ -55,7 +55,7 @@ class SearchView(ListView):
 
 
 class ShowEmpInfoView(DetailView):
-    ''' display the info of this user '''
+    '''display the info of this user'''
 
     model = Employee # retrieve Employee objects from the database
     template_name = 'project/employee_info.html' # delegate the display to this template
@@ -74,7 +74,7 @@ class ShowEmpInfoView(DetailView):
 
 
 class ShowPartInfoView(DetailView):
-    ''' display the info of this part '''
+    '''display the info of this part'''
 
     model = Part # retrieve Part objects from the database
     template_name = 'project/part_info.html' # delegate the display to this template
@@ -97,7 +97,7 @@ class ShowPartInfoView(DetailView):
 
 
 class AddNewPartView(CreateView):
-    ''' a view to create a new part and store in the database '''
+    '''a view to create a new part and store in the database'''
 
     model = Part # retrieve Part objects from the database
     form_class = AddNewPartForm # form used to create a new part 
@@ -106,7 +106,7 @@ class AddNewPartView(CreateView):
 
 
 class AddNewEmpView(CreateView):
-    ''' a view to create a new employee and store in the database '''
+    '''a view to create a new employee and store in the database'''
 
     model = Employee # retrieve Employee objects from the database
     form_class = AddNewEmpForm # form used to create a new employee
@@ -115,7 +115,7 @@ class AddNewEmpView(CreateView):
 
 
 class UpdatePartInfoView(UpdateView):
-    ''' a view to update a part object and store it in the database '''
+    '''a view to update a part object and store it in the database'''
 
     model = Part # retrieve Part objects from the database
     form_class = UpdatePartInfoForm # form used to update a new part's information
@@ -124,10 +124,10 @@ class UpdatePartInfoView(UpdateView):
 
 
 class DeletePartView(DeleteView):
-    ''' a view to delete a part and remove it from the database '''
+    '''a view to delete a part and remove it from the database'''
 
-    template_name = "project/delete_part.html" 
-    queryset = Part.objects.all() 
+    template_name = "project/delete_part.html" # delegate the display to this template
+    queryset = Part.objects.all() # a queryset contains all the part objects
 
     def get_success_url(self):
         '''Return a the URL to which we should be directed after the delete.'''
@@ -138,7 +138,7 @@ class DeletePartView(DeleteView):
 
 
 def checkout_part(request, pk):
-    ''' a custom view that handles the part checkout submission'''
+    '''a custom view that handles the part checkout submission'''
     
     # if and only if we are processing a POST request, try to read the data
     if request.method == 'POST':

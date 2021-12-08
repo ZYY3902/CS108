@@ -8,6 +8,7 @@ from django.forms.models import BaseInlineFormSet
 from .models import *
 
 class AddNewPartForm(forms.ModelForm):
+    '''A form to create a new Part object'''
 
     part_id = forms.CharField(label="Part ID", required=True)
     part_name = forms.CharField(label="Part Name", required=True)
@@ -17,7 +18,7 @@ class AddNewPartForm(forms.ModelForm):
     image = forms.URLField(label="Image")
 
     class Meta:
-        '''inner class related to the Part model'''
+        '''inner class related to this form'''
 
         # model to create 
         model = Part 
@@ -25,7 +26,9 @@ class AddNewPartForm(forms.ModelForm):
         fields = ['part_id', 'part_name', 'category', 'quantity', 'manufactured_year', 'image']
 
 
+
 class AddNewEmpForm(forms.ModelForm):
+    '''A form to create a new Employee object'''
 
     first_name = forms.CharField(label="First Name", required=True)
     last_name = forms.CharField(label="Last Name", required=True)
@@ -33,7 +36,7 @@ class AddNewEmpForm(forms.ModelForm):
     email = forms.EmailField(label="Email", required=True)
 
     class Meta:
-        '''inner class related to the Part model'''
+        '''inner class related to this form'''
 
         # model to create 
         model = Employee 
@@ -41,18 +44,30 @@ class AddNewEmpForm(forms.ModelForm):
         fields = ['first_name', 'last_name', 'employee_id', 'email']
 
 
+
 class CreateCheckoutPartForm(forms.ModelForm):
+    '''A form to checkout a Part object'''
 
     checkout_date = forms.DateField(widget=forms.SelectDateWidget(years=range(2022,2012,-1),),)
-    estimated_return_date = forms.DateField(widget=forms.SelectDateWidget(years=range(2022,2012,-1),),)
+    return_date = forms.DateField(widget=forms.SelectDateWidget(years=range(2022,2012,-1),),)
 
     class Meta:
+        '''inner class related to this form'''
+
+        # model to create
         model = Record
-        fields = ['employee', 'automotive_parts', 'checkout_date', 'estimated_return_date']
+        # fields related to the create profile form
+        fields = ['employee', 'automotive_parts', 'checkout_date', 'return_date']
+
 
 
 class UpdatePartInfoForm(forms.ModelForm):
+    '''A form to update a Part object'''
 
     class Meta:
+        '''inner class related to this form'''
+
+        # model to create
         model = Part
+        # fields related to the create profile form
         fields = ['part_id', 'part_name', 'part_condition']

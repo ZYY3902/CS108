@@ -5,8 +5,8 @@
 {% block content %}
 
 <h2>Info about {{part.part_name}}</h2>
-    <p style="text-align: center;">
-    <table> 
+    <!-- display detailed inforamtion about this part -->
+    <table class="center"> 
         <tr>
             <th></th><td><img src="{{part.image}}" style="width: 40%;"></td>
         </tr>
@@ -27,13 +27,13 @@
         </tr>
         <tr>
             <th>
-                <a href="{% url 'update_part' part.pk %}">Update</a> |
-                <a href="{% url 'delete_part' part.pk %}">Delete</a> <!-- link to delete a part-->
+                <a href="{% url 'update_part' part.pk %}">Update</a> |  <!-- link to update a part -->
+                <a href="{% url 'delete_part' part.pk %}">Delete</a>    <!-- link to delete a part -->
             </th>
         </tr>
     </table>
-</p>
 
+    <!-- checkout form to checkout this part -->
     <hr>
     <h2>Do you want to checkout this part?</h2>
     <form method ="POST" action = '/project/parts/{{part.pk}}/checkout_form' enctype="multipart/form-data">
@@ -41,8 +41,8 @@
         <table>
             <tr>
                 {{create_checkout_form}}
-                <td></td> <!-- empty space-->
-                <td></td> <!-- empty space-->
+                <td></td> <!-- empty space -->
+                <td></td> <!-- empty space -->
                 <td><input type="submit" value="Checkout this item"></td> 
             </tr>
         </table>

@@ -3,42 +3,71 @@
 <html>
     <head>
         <title>Part Record</title>
-        <!-- <link rel="stylesheet" 
-              href="https://cs-people.bu.edu/ziningye/css/template-fruitkha/fruitkha/assets/css/main.css"> -->
+        <!-- LINK: CSS Template -->
+        <!-- favicon -->
+        <link rel="shortcut icon" type="image/png" 
+        href="https://cs-people.bu.edu/ziningye/css/template-fruitkha/fruitkha/assets/img/favicon.png">
+        <!-- google font -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+        <!-- fontawesome -->
+        <link rel="stylesheet" href="https://cs-people.bu.edu/ziningye/css/template-fruitkha/fruitkha/assets/css/all.min.css">
+        <!-- bootstrap -->
+        <link rel="stylesheet" href="https://cs-people.bu.edu/ziningye/css/template-fruitkha/fruitkha/assets/bootstrap/css/bootstrap.min.css">
+        <!-- owl carousel -->
+        <link rel="stylesheet" href="https://cs-people.bu.edu/ziningye/css/template-fruitkha/fruitkha/assets/css/owl.carousel.css">
+        <!-- magnific popup -->
+        <link rel="stylesheet" href="https://cs-people.bu.edu/ziningye/css/template-fruitkha/fruitkha/assets/css/magnific-popup.css">
+        <!-- animate css -->
+        <link rel="stylesheet" href="https://cs-people.bu.edu/ziningye/css/template-fruitkha/fruitkha/assets/css/animate.css">
+        <!-- mean menu css -->
+        <link rel="stylesheet" href="https://cs-people.bu.edu/ziningye/css/template-fruitkha/fruitkha/assets/css/meanmenu.min.css">
+        <!-- main style -->
+        <link rel="stylesheet" href="https://cs-people.bu.edu/ziningye/css/template-fruitkha/fruitkha/assets/css/main.css">
+        <!-- responsive -->
+        <link rel="stylesheet" href="https://cs-people.bu.edu/ziningye/css/template-fruitkha/fruitkha/assets/css/responsive.css">
+
         <style>
         body {
-            font-family:monospace,serif;
-            font-size: 20px;
-            background-color:lightgoldenrodyellow;
             text-align: center;
+            background-color: blanchedalmond;
         }
         form {display: inline-block;}
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        th {text-align: center;}
         </style>
+
     </head>
 
     <body>
     <!-- navigation links -->
-    <header>
-        <!-- LINK1: Record page as the homepage link -->
-        <a href="{% url 'show_record' %}">Record</a> |
-        <!-- LINK2: Show All Parts -->
-        <a href="{% url 'show_all_parts' %}">All Automotive Parts</a> |
-        <!-- LINK3: Show All Employees -->
-        <a href="{% url 'show_all_emps' %}">All Employees</a> |
-        <!-- LINK4: Add a New Part-->
-        <a href="{% url 'add_new_part' %}">Add New Part</a> |
-        <!-- LINK4: Add a New Employee-->
-        <a href="{% url 'add_new_emp' %}">Add New Employee</a> |
-        <!-- LINK5: Search -->
-        <a href="{% url 'search' %}">Search</a>
-    </header>
-    
-    
-    {% block content %}
-    {% endblock %}
+        <header>
+            <p>
+            <!-- LINK1: Record page as the homepage link -->
+            <a href="{% url 'show_record' %}">Record</a> |
+            <!-- LINK2: Show All Parts -->
+            <a href="{% url 'show_all_parts' %}">All Automotive Parts</a> |
+            <!-- LINK3: Show All Employees -->
+            <a href="{% url 'show_all_emps' %}">All Employees</a> |
+            <!-- LINK4: Add a New Part-->
+            <a href="{% url 'add_new_part' %}">Add New Part</a> |
+            <!-- LINK4: Add a New Employee-->
+            <a href="{% url 'add_new_emp' %}">Add New Employee</a> |
+            <!-- LINK5: Search Page-->
+            <a href="{% url 'search' %}">Search</a>
+        </p>
+        <p></p> <!-- empty -->
+        </header>
+        
+        
+        {% block content %}
+        {% endblock %}
 
-    <hr>
-    Create by ziningye@bu.edu
+        <hr>
+        Create by ziningye@bu.edu
     </body>
         
 </html>

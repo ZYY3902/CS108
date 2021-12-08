@@ -6,25 +6,26 @@
 
 <h2>Search</h2>
 
+<!-- form to get the text need to be searched -->
 <form>
     {% csrf_token %}
 
     <input type="text", name="search_text">
-    <input type = "submit">
-
+    <input type ="submit", value="search">
 </form>
 
 
 <h2>Search Results</h2>
+
 {% if search %}
-    <ul>
+    <ul> <!-- for loop to display the search result -->
         {% for s in search %}
         <li>
             {{s.part_id}} - {{s.part_name}}
         </li>
         {% endfor %}
     </ul>
-{% else %}
+{% else %} <!-- if nothing found, display "no results" -->
     No results matched your search.
 {% endif %}
 

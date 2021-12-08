@@ -6,23 +6,23 @@
 
 <h2>All Parts</h2>
 
-<table border=1 width=98% style="margin-left:12px;">
+<table border=1 width=98% style="margin-left:12px; background-color: aliceblue;">
+    
     <colgroup>
         <col span="1" style="width: 50%;">
-        <col span="1" style="width: 50%;">
-      
-     </colgroup>
-     <tr>
-         <th></th>
-         <th>Part Name</th>
-         
-     </tr>
-     {% for part in allparts %}
-     <tr>
-         <td style="text-align: center"><img src={{part.image}} style="width: 60%;" /></td>
-         <td style="text-align: center"><a href="{% url 'parts_info' part.pk%}">{{part.part_name}}</a></td>
-     </tr>
-     {% endfor %}
+        <col span="1" style="width: 50%;">  
+    </colgroup>
+    <tr>
+        <th></th> <!-- empty -->
+        <th>Part Name</th>
+    <!-- for loop to display a listing of parts -->
+    </tr>
+    {% for part in allparts %}
+    <tr>
+        <td style="text-align: center"><img src={{part.image}} style="width: 60%;" /></td>
+        <td style="text-align: center"><a href="{% url 'parts_info' part.pk%}">{{part.part_name}}</a></td>
+    </tr>
+    {% endfor %}
 
 </table>
 

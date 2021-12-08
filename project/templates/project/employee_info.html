@@ -6,10 +6,12 @@
 
 <h2>Info about {{employee.first_name}} {{employee.last_name}}</h2>
 
-<table>
+<!-- a table display all the information about the employee -->
+<table class="center">
+
     <tr>
         <td>
-            <table style="align-items: center;"> 
+            <table> 
                 <tr>
                     <th>Name: </th><td>{{employee.first_name}} {{employee.last_name}}</td>
                 </tr>   
@@ -22,7 +24,7 @@
             </table>
         </td>
     </tr>
-
+    
 </table>
 
 {% endblock %}

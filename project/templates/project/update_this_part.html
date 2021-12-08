@@ -4,7 +4,7 @@
 
 {% block content %}
 
-
+<div class="contact-form">
 <form method="POST"> <!-- HTTP POST to send data to the server -->
     {% csrf_token %}
 
@@ -17,5 +17,6 @@
     </table>
 
 </form>
+</div>
 
 {% endblock %}

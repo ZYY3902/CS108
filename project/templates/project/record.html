@@ -7,10 +7,11 @@
 
 <table border=1 width=98% style="margin-left:12px; background-color: aliceblue;">
     <colgroup>
+        <col span="1" style="width: 15%;">
+        <col span="1" style="width: 15%;">
         <col span="1" style="width: 20%;">
         <col span="1" style="width: 20%;">
-        <col span="1" style="width: 20%;">
-        <col span="1" style="width: 20%;">
+        <col span="1" style="width: 10%;">
         <col span="1" style="width: 20%;">
     </colgroup>
 
@@ -19,6 +20,7 @@
         <th>Who has it?</th>
         <th>Checkout Date</th>
         <th>Estimated Return Date</th>
+        <th>Quantity</th>
         <th>Current Condition</th>
     </tr>
 
@@ -26,15 +28,17 @@
     <tr>
         <!-- display the part name and part id -->
         <td style="text-align: center">
-            <a href="{% url 'parts_info' r.pk%}">{{r.automotive_parts.part_id}}</a></td>
+            <a href="{% url 'parts_info' r.automotive_parts.pk%}">{{r.automotive_parts.part_id}}</a></td>
         <!-- display the employee name -->
         <td style="text-align: center">
-            <a href="{% url 'emps_info' r.pk%}">{{r.employee.first_name}} {{r.employee.last_name}}</a>
+            <a href="{% url 'emps_info' r.employee.pk%}">{{r.employee.first_name}} {{r.employee.last_name}}</a>
         </td>
         <!-- display checkout date -->
         <td style="text-align: center">{{r.checkout_date}}</td>
         <!-- display the estimated return date -->
         <td style="text-align: center">{{r.return_date}}</td>
+        <!-- display the quantity -->
+        <td style="text-align: center">{{r.automotive_parts.quantity}}</td>
         <!-- display the part condition -->
         <td style="text-align: center">{{r.automotive_parts.part_condition }}</td>
     </tr>

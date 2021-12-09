@@ -14,7 +14,7 @@ class AddNewPartForm(forms.ModelForm):
     part_name = forms.CharField(label="Part Name", required=True)
     category = forms.CharField(label="Category", required=True)
     quantity = forms.IntegerField(label="Quantity", required=True)
-    manufactured_year = forms.IntegerField(label="Manufactured Year", required=True)
+    manufactured_year = forms.CharField(label="Manufactured Year", required=True)
     image = forms.URLField(label="Image")
 
     class Meta:
